@@ -2,7 +2,7 @@ import networkx as nx
 import random
 
 def LinearThreshold(G: nx.Graph, seeds: list):
-    if len(seeds) == 0:
+    if len(seeds) == 0 or len(G) == 0:
         return [], []
     assert type(seeds[0]) == type(list(G)[0]), 'seeds must be the same type as graph nodes'
 
@@ -36,6 +36,8 @@ def LinearThreshold(G: nx.Graph, seeds: list):
 
 
 def IndependantCascade(G: nx.Graph, seeds: list, activation_prob: float = 0.5):
+    if len(seeds) == 0 or len(G) == 0:
+        return [], []
     assert type(seeds[0]) == type(list(G)[0]), 'seeds must be the same type as graph nodes'
 
     infected_nodes = seeds.copy()
